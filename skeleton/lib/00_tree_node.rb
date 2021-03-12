@@ -8,9 +8,9 @@ class PolyTreeNode
       @children = []
     end
 
-    def parent=()
+    def parent=(arg)
 
     end
-
+#testetsetestststetfdfdfdfdfsfsd
 end
 
