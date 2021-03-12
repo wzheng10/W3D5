@@ -9,11 +9,13 @@ class PolyTreeNode
     end
 
     def parent=(arg)
+      if @parent != arg && @parent != nil
+        @parent.children.delete(self)
+      end
       @parent = arg
+      return nil if arg == nil
       if !arg.children.include?(self)
         @parent.children << self
-      else
-        return nil
       end
     end
 
