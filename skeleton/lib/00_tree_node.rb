@@ -1,3 +1,4 @@
+require "byebug"
 class PolyTreeNode
 
     attr_reader :value, :parent, :children
@@ -34,16 +35,34 @@ class PolyTreeNode
       end
     end
 
+    def inspect
+      "#<PolyTreeNode:#{self.value}, child:#{self.children.map(&:value)}>"
+    end
+
+    def dfs(target)
+      return nil if self.children.empty? && self.value != target
+      
+      # debugger
+      self.children.each do |child|
+        leaf = child.dfs(target)
+        if leaf != nil
+          return leaf
+        end
+      end
+      return self if self.value == target
+      return nil
+    end
+
 end
 
+#     1(a) 
+#  2(b)    3(c) 
+#4(d)  5(e)  6(t)
 
-#node1 {djalkthgjeajrtkldhf;jsalkf value="root" parent=nil children=[node2]} 
+# a.dfs(f) = 6
+# 2b.dfs(f) = nil
+# 3c.dfs(f) = 6
 
-#node2 {djalkthgjeajrtkldhf;jsalkf value="child1" parent=node1 children=[]}
-
-# self = node2
-
-# def parent=(node1)
-#   @parent = node1
-#   @parent.children << self 
-# end
+# let(:node1) { PolyTreeNode.new('root') }
+# let(:node2) { PolyTreeNode.new('child1') }
+# let(:node3) { PolyTreeNode.new('child2') }
