@@ -36,7 +36,8 @@ class PolyTreeNode
     end
 
     def inspect
-      "#<PolyTreeNode:#{self.value}, child:#{self.children.map(&:value)}>"
+      "#<PolyTreeNode:#{self.value},child:#{self.children.map(&:value)}>"
+      
     end
 
     def dfs(target)
@@ -53,6 +54,17 @@ class PolyTreeNode
       return nil
     end
 
+    def bfs(target)
+      line = [self]
+      
+      while !line.empty? 
+        testing = line.shift
+        return testing if testing.value == target 
+        line += testing.children
+      end
+
+      return nil
+    end
 end
 
 #     1(a) 
