@@ -3,7 +3,16 @@ class KnightPathFinder
 
     MOVES = [[1,2],[2,1],[-2,-1],[-1,-2],[1,-2],[2,-1],[-2,1],[-1,2]]
     def self.valid_moves(pos)
-        
+        possible_moves = []
+        MOVES.each do |move|
+            new_pos = pos.dup
+            new_pos[0] += move[0]   
+            new_pos[1] += move[1]
+            if (0..7).include?(new_pos[0]) && (0..7).include?(new_pos[1])
+                possible_moves << new_pos
+            end
+        end
+        return possible_moves
     end
 
     def initialize(start_pos)
@@ -17,7 +26,8 @@ class KnightPathFinder
     end
 
     def new_move_positions(pos)
-        Class.valid_moves(pos) #Can Class be interchanged with KnightPathFinder
-
+        possible_moves = KnightPathFinder.valid_moves(pos) #Can Class be interchanged with KnightPathFinder
+        possible_moves.reject! { |move| @considered_positions.include?(move)}
+        @considered_positions << possible_moves 
     end
 end
