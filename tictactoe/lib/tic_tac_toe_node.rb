@@ -1,7 +1,13 @@
+require "byebug"
 require_relative 'tic_tac_toe'
 
 class TicTacToeNode
   def initialize(board, next_mover_mark, prev_move_pos = nil)
+    debugger
+    @board = board
+    @mark = next_mover_mark
+    @prev_move_pos = prev_move_pos
+
   end
 
   def losing_node?(evaluator)
