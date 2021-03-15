@@ -49,13 +49,13 @@ class KnightPathFinder
         trace_path_back(end_point)
     end
 
-    def trace_path_back(end_point)
+    def trace_path_back(node)
         debugger
-        return [end_point.value] if end_point.parent == nil
+        return [node.value] if node.parent == nil
         path = []
         
-        path += trace_path_back(end_point.parent)  
-        path << end_point.value
+        path += trace_path_back(node.parent) 
+        path << node.value
         return path
     end
 
