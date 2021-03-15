@@ -40,4 +40,17 @@ class KnightPathFinder
         @considered_positions += possible_moves 
         return possible_moves
     end
+
+    def find_path(end_pos)
+        end_point = @root_node.bfs(end_pos)
+        trace_path_back(end_point)
+    end
+
+    def trace_path_back(end_point)
+        path = [@root_node.value]
+        end_point.parent
+    end
+
 end
+
+#[[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
