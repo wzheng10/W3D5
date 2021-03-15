@@ -37,7 +37,7 @@ class KnightPathFinder
     def new_move_positions(pos)
         possible_moves = KnightPathFinder.valid_moves(pos) #Can Class be interchanged with KnightPathFinder
         possible_moves.reject! { |move| @considered_positions.include?(move)}
-        @considered_positions << possible_moves 
+        @considered_positions += possible_moves 
         return possible_moves
     end
 end
