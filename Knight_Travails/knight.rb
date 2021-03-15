@@ -1,3 +1,4 @@
+require "byebug"
 require_relative "../skeleton/lib/00_tree_node.rb"
 class KnightPathFinder
 
@@ -49,6 +50,7 @@ class KnightPathFinder
     end
 
     def trace_path_back(end_point)
+        debugger
         return [end_point.value] if end_point.parent == nil
         path = []
         
